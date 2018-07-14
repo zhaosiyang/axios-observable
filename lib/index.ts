@@ -15,31 +15,31 @@ export class Axios {
   } = axios.interceptors;
 
   static request<T=any>(config: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.request(...arguments));
+    return promiseToObservable(axios.request(config));
   }
 
   static get<T=any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.get(...arguments));
+    return promiseToObservable(axios.get(url, config));
   }
 
   static post<T=any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.post(...arguments));
+    return promiseToObservable(axios.post(url, data, config));
   }
 
   static put<T=any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.put(...arguments));
+    return promiseToObservable(axios.put(url, data, config));
   }
 
   static patch<T=any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.patch(...arguments));
+    return promiseToObservable(axios.patch(url, data, config));
   }
 
   static delete<T=any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.delete(...arguments));
+    return promiseToObservable(axios.delete(url, config));
   }
 
   static head<T=any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(axios.head(...arguments));
+    return promiseToObservable(axios.head(url, config));
   }
 
   static create(config: AxiosRequestConfig): Axios {
@@ -47,32 +47,31 @@ export class Axios {
   }
 
   request<T=any>(config: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.request(...arguments));
+    return promiseToObservable(this.axiosInstance.request(config));
   }
 
-  // TODO verify config undefined
   get<T=any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.get(...arguments));
+    return promiseToObservable(this.axiosInstance.get(url, config));
   }
 
   head<T=any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.head(...arguments));
+    return promiseToObservable(this.axiosInstance.head(url, config));
   }
 
   post<T=any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.post(...arguments));
+    return promiseToObservable(this.axiosInstance.post(url, data, config));
   }
 
   put<T=any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.put(...arguments));
+    return promiseToObservable(this.axiosInstance.put(url, data, config));
   }
 
   patch<T=any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.patch(...arguments));
+    return promiseToObservable(this.axiosInstance.patch(url, data, config));
   }
 
   delete<T=any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return promiseToObservable(this.axiosInstance.delete(...arguments));
+    return promiseToObservable(this.axiosInstance.delete(url, config));
   }
 
   get defaults() {

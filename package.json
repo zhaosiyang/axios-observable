@@ -4,8 +4,7 @@
   "description": "make axios return Observable as opposed to Promise",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node index.ts"
+    "build": "./node_modules/.bin/tsc"
   },
   "keywords": [
     "axios",
@@ -18,14 +17,15 @@
   "license": "ISC",
   "devDependencies": {
     "rxjs": "^6.2.2",
-    "ts-node": "^7.0.0"
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
   },
   "peerDependencies": {
     "rxjs": "^6.2.2"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
-    "axios": "^0.18.0",
-    "typescript": "^2.9.2"
+    "@types/node": "^10.5.2",
+    "axios": "^0.18.0"
   }
 }
