@@ -1,0 +1,31 @@
+{
+  "name": "axios-observable",
+  "version": "1.0.0",
+  "description": "make axios return Observable as opposed to Promise",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node index.ts"
+  },
+  "keywords": [
+    "axios",
+    "observable",
+    "rxjs",
+    "ajax",
+    "http"
+  ],
+  "author": "Siyang (Kern) Zhao",
+  "license": "ISC",
+  "devDependencies": {
+    "rxjs": "^6.2.2",
+    "ts-node": "^7.0.0"
+  },
+  "peerDependencies": {
+    "rxjs": "^6.2.2"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.18.0",
+    "typescript": "^2.9.2"
+  }
+}
