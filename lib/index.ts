@@ -3,7 +3,7 @@ import axios from 'axios';
 import {AxiosObservable} from "./axios-observable.interface";
 import {promiseToObservable} from "./promise-to-observable";
 
-export class Axios {
+class Axios {
 
   constructor(private axiosInstance: AxiosInstance) {
   }
@@ -78,3 +78,6 @@ export class Axios {
     return this.axiosInstance.defaults;
   }
 }
+
+export default Axios;
+export {Axios};
