@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.0"
   }
 }
