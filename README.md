@@ -146,7 +146,7 @@ as opposed to axios using `all` and `spread`, rxjs has a much better way of hand
 
 You can create a new instance of Axios with a custom config.
 
-##### axios.create([config])
+##### Axios.create([config])
 
 ```js
 const instance = Axios.create({
@@ -353,21 +353,6 @@ The response for a request contains the following information.
 }
 ```
 
-When using `then`, you will receive the response as follows:
-
-```js
-axios.get('/user/12345')
-  .then(function(response) {
-    console.log(response.data);
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
-  });
-```
-
-When using `catch`, or passing a [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) as second parameter of `then`, the response will be available through the `error` object as explained in the [Handling Errors](#handling-errors) section.
-
 ## Config Defaults
 
 You can specify config defaults that will be applied to every request.
@@ -454,7 +439,7 @@ instance.interceptors.request.use(function () {/*...*/});
 You can define a custom HTTP status code error range using the `validateStatus` config option.
 
 ```js
-axios.get('/user/12345', {
+Axios.get('/user/12345', {
   validateStatus: function (status) {
     return status < 500; // Reject only if the status code is greater than or equal to 500
   }
@@ -467,7 +452,7 @@ As opposed to axios which using cancel token, rxjs comes with a more natural way
 
 ```js
 
-const subscription = axios.get('/user/12345').subscribe(response => console.log(response));
+const subscription = Axios.get('/user/12345').subscribe(response => console.log(response));
 
 subscription.unsubscribe();
 ```
@@ -507,7 +492,7 @@ const options = {
   data: qs.stringify(data),
   url,
 };
-axios.request(options);
+Axios.request(options);
 ```
 
 ### Node.js
@@ -516,7 +501,7 @@ In node.js, you can use the [`querystring`](https://nodejs.org/api/querystring.h
 
 ```js
 const querystring = require('querystring');
-axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
+Axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
 You can also use the [`qs`](https://github.com/ljharb/qs) library.
@@ -526,7 +511,7 @@ axios-observable includes [TypeScript](http://typescriptlang.org) definitions.
 ```typescript
 import Axios from 'axios-observable';
 // or import {Axios} from 'axios-observable';
-axios.get('/user?ID=12345');
+Axios.get('/user?ID=12345');
 ```
 
 
