@@ -1,16 +1,7 @@
 import {AxiosPromise, AxiosResponse} from "axios";
-import {Observable, Observer} from "rxjs/index";
+import {from, Observer} from "rxjs/index";
 import {AxiosObservable} from "./axios-observable.interface";
 
 export const promiseToObservable = <T = any>(promise: AxiosPromise<T>): AxiosObservable<T> => {
-  return Observable.create((observer: Observer<AxiosResponse<T>>) => {
-    return promise
-      .then((response: AxiosResponse<T>) => {
-        observer.next(response);
-        observer.complete();
-      })
-      .catch(err => {
-        observer.error(err);
-      })
-  })
+  return from(promise);
 };
