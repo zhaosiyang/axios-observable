@@ -9,7 +9,7 @@ class Axios {
   }
 
   static defaults: AxiosRequestConfig = axios.defaults;
-  static interceptors: {
+  interceptors: {
     request: AxiosInterceptorManager<AxiosRequestConfig>;
     response: AxiosInterceptorManager<AxiosResponse>;
   } = axios.interceptors;
