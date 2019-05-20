@@ -1,6 +1,6 @@
 import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse} from 'axios';
 import {AxiosObservable} from './axios-observable.interface';
-import {createColdObservableFromHotPromise} from './create-cold-observable-from-hot-promise';
+import {createObservable} from './create-observable';
 
 class Axios {
 
@@ -18,31 +18,31 @@ class Axios {
   }
 
   static request<T = any>(config: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise(axios.request, config)
+    return createObservable(axios.request, config);
   }
 
   static get<T = any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(axios.get, url, config);
+    return createObservable<T>(axios.get, url, config);
   }
 
   static post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(axios.post, url, data, config);
+    return createObservable<T>(axios.post, url, data, config);
   }
 
   static put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(axios.put, url, data, config);
+    return createObservable<T>(axios.put, url, data, config);
   }
 
   static patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(axios.patch, url, data, config);
+    return createObservable<T>(axios.patch, url, data, config);
   }
 
   static delete<T = any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(axios.delete, url, config);
+    return createObservable<T>(axios.delete, url, config);
   }
 
   static head<T = any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(axios.head, url, config);
+    return createObservable<T>(axios.head, url, config);
   }
 
   static create(config: AxiosRequestConfig): Axios {
@@ -50,31 +50,31 @@ class Axios {
   }
 
   request<T = any>(config: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise(this.axiosInstance.request, config);
+    return createObservable(this.axiosInstance.request, config);
   }
 
   get<T = any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(this.axiosInstance.get, url, config);
+    return createObservable<T>(this.axiosInstance.get, url, config);
   }
 
   head<T = any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(this.axiosInstance.head, url, config);
+    return createObservable<T>(this.axiosInstance.head, url, config);
   }
 
   post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(this.axiosInstance.post, url, data, config);
+    return createObservable<T>(this.axiosInstance.post, url, data, config);
   }
 
   put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(this.axiosInstance.put, url, data, config);
+    return createObservable<T>(this.axiosInstance.put, url, data, config);
   }
 
   patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(this.axiosInstance.patch, url, data, config);
+    return createObservable<T>(this.axiosInstance.patch, url, data, config);
   }
 
   delete<T = any>(url: string, config?: AxiosRequestConfig): AxiosObservable<T> {
-    return createColdObservableFromHotPromise<T>(this.axiosInstance.delete, url, config);
+    return createObservable<T>(this.axiosInstance.delete, url, config);
   }
 }
 
