@@ -1,8 +1,8 @@
 # axios-observable
 ##### Observable (as opposed to Promise) based HTTP client for the browser and node.js
-Want to use axios in a rxjs (observable) way? there we go!
+Want to use axios in a rxjs (observable) way? There we go!
 
-This API of axios-observable is almost same as API of axios, providing with smooth transition. So the documentation mirrors the one of axios (A few exceptions will be cleared pointed out).
+This API of axios-observable is almost same as API of axios, giving you smooth transition. So the documentation mirrors the one of axios (A few exceptions will be cleared pointed out).
 
 ## Features
 
@@ -11,7 +11,7 @@ This API of axios-observable is almost same as API of axios, providing with smoo
 - Supports the **Observable** API
 - Intercept request and response
 - Transform request and response data
-- Cancel requests in a more elegant way
+- (NEW in v1.1.0) Cancel requests through unsubscribe
 - Automatic transforms for JSON data
 - Client side support for protecting against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
@@ -29,8 +29,8 @@ $ npm install axios rxjs axios-observable
 Performing a `GET` request
 
 ```js
-const Axios = require('axios-observable').Axios;
-// or import Axios from  'axios-observable';
+import Axios from  'axios-observable';
+// or const Axios = require('axios-observable').Axios;
 
 // Make a request for a user with a given ID
 Axios.get('/user?ID=12345')
@@ -49,6 +49,7 @@ Axios.get('/user?ID=12345'), {
     response => console.log(response),
     error => console.log(error)
   );
+```
 
 Performing a `POST` request
 
@@ -61,7 +62,6 @@ Axios.post('/user', {
     response => console.log(response),
     error => console.log(error)
   );
-
 ```
 
 ## Why observable is better than Promise?
