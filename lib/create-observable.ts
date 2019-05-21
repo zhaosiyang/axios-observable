@@ -9,14 +9,18 @@ export function createObservable<T>(promiseFactory: (...args: any[]) => AxiosPro
     args[args.length - 1] = config;
   }
   let cancelSource: CancelTokenSource;
-  if (!config.cancelToken) {
-    cancelSource = axios.CancelToken.source();
-    config.cancelToken = cancelSource.token;
-  } else {
+  const hasCancelToken: boolean = !!config.cancelToken;
+  if (hasCancelToken) {
     console.warn(`No need to use cancel token, just unsubscribe the subscription would cancel the http request automatically`);
   }
 
   const observable: AxiosObservable<T> = new Observable(subscriber => {
+
+    if (!hasCancelToken) {
+      cancelSource = axios.CancelToken.source();
+      config.cancelToken = cancelSource.token;
+    }
+
     promiseFactory(...args).then(response => {
       subscriber.next(response);
       subscriber.complete();
