@@ -1,4 +1,3 @@
-lib/
-.playground.*
+playground
 .idea
 DS_STORE
