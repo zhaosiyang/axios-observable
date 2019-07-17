@@ -17,6 +17,10 @@ class Axios {
     return this.axiosInstance.defaults;
   }
 
+  get interceptors() {
+    return this.axiosInstance.interceptors;
+  }
+
   static request<T = any>(config: AxiosRequestConfig): AxiosObservable<T> {
     return createObservable(axios.request, config);
   }
