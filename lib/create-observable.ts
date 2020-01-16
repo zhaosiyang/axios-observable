@@ -4,10 +4,9 @@ import {AxiosObservable} from './axios-observable.interface';
 
 export function createObservable<T>(promiseFactory: (...args: any[]) => AxiosPromise<T>, ...args: any[]): AxiosObservable<T> {
   let config: AxiosRequestConfig = args[args.length - 1];
-  if (!config) {
-    config = {};
-    args[args.length - 1] = config;
-  }
+  config = config ? {...config} : {};
+  args[args.length - 1] = config;
+
   let cancelSource: CancelTokenSource;
   const hasCancelToken: boolean = !!config.cancelToken;
   if (hasCancelToken) {
