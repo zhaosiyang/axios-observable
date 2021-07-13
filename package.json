@@ -1,6 +1,6 @@
 {
   "name": "axios-observable",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "make axios return Observable as opposed to Promise",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
