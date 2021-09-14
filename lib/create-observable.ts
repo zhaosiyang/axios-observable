@@ -13,7 +13,7 @@ export function createObservable<T>(promiseFactory: (...args: any[]) => AxiosPro
     console.warn(`No need to use cancel token, just unsubscribe the subscription would cancel the http request automatically`);
   }
 
-  const observable: AxiosObservable<T> = new Observable(subscriber => {
+  const observable: AxiosObservable<T> = new Observable((subscriber: any) => {
 
     if (!hasCancelToken) {
       cancelSource = axios.CancelToken.source();
