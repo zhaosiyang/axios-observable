@@ -1,6 +1,6 @@
 {
   "name": "axios-observable",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "make axios return Observable as opposed to Promise",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   "author": "Siyang Kern Zhao <siyangkernzhao@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.0.2",
+    "typescript": "^4.0.2"
   },
   "peerDependencies": {
     "rxjs": "^7.0.0",
