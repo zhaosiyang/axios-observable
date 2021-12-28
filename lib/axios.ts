@@ -4,7 +4,7 @@ import {createObservable} from './create-observable';
 
 class Axios {
 
-  static defaults: AxiosRequestConfig = axios.defaults;
+  static defaults: Omit<AxiosRequestConfig<any>, 'headers'> = axios.defaults;
   static interceptors: {
     request: AxiosInterceptorManager<AxiosRequestConfig>;
     response: AxiosInterceptorManager<AxiosResponse>;
