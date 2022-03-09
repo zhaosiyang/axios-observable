@@ -1,10 +1,10 @@
-import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, { AxiosDefaults, AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from 'axios';
 import {AxiosObservable} from './axios-observable.interface';
 import {createObservable} from './create-observable';
 
 class Axios {
 
-  static defaults: Omit<AxiosRequestConfig<any>, 'headers'> = axios.defaults;
+  static defaults: AxiosDefaults = axios.defaults;
   static interceptors: {
     request: AxiosInterceptorManager<AxiosRequestConfig>;
     response: AxiosInterceptorManager<AxiosResponse>;
