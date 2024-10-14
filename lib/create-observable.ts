@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs';
-import axios, {AxiosPromise, AxiosRequestConfig, CancelTokenSource} from 'axios';
+import {AxiosPromise, AxiosRequestConfig} from 'axios';
 import {AxiosObservable} from './axios-observable.interface';
 
 export function createObservable<T>(promiseFactory: (...args: any[]) => AxiosPromise<T>, ...args: any[]): AxiosObservable<T> {
@@ -7,17 +7,21 @@ export function createObservable<T>(promiseFactory: (...args: any[]) => AxiosPro
   config = config ? {...config} : {};
   args[args.length - 1] = config;
 
-  let cancelSource: CancelTokenSource;
+  let abortController: AbortController;
   const hasCancelToken: boolean = !!config.cancelToken;
+  const hasSignal: boolean = !!config.signal;
   if (hasCancelToken) {
+    console.warn(`No need to use cancel token, just unsubscribe the subscription would cancel the http request automatically`);
+  }
+  if (hasSignal) {
     console.warn(`No need to use cancel token, just unsubscribe the subscription would cancel the http request automatically`);
   }
 
   const observable: AxiosObservable<T> = new Observable((subscriber: any) => {
 
-    if (!hasCancelToken) {
-      cancelSource = axios.CancelToken.source();
-      config.cancelToken = cancelSource.token;
+    if (!hasSignal) {
+      abortController = new AbortController();
+      config.signal = abortController.signal;
     }
 
     promiseFactory(...args).then(response => {
@@ -36,8 +40,8 @@ export function createObservable<T>(promiseFactory: (...args: any[]) => AxiosPro
     const _unsubscribe = subscription.unsubscribe.bind(subscription);
 
     subscription.unsubscribe = () => {
-      if (cancelSource) {
-        cancelSource.cancel();
+      if (abortController) {
+        abortController.abort();
       }
       _unsubscribe();
     };

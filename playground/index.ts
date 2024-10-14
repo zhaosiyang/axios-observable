@@ -1,3 +1,5 @@
 import Axios from "../dist";
 
-Axios.get('https://google.ca').subscribe(response => console.log(response));
+const subscription = Axios.get('https://google.ca').subscribe(response => console.log(response));
+setTimeout(() => subscription.unsubscribe(), 10);
+

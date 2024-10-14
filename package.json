@@ -1,6 +1,6 @@
 {
   "name": "axios-observable",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "make axios return Observable as opposed to Promise",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     "typescript": "^4.0.2"
   },
   "peerDependencies": {
-    "axios": "^1.0.0",
+    "axios": "^1.2.1",
     "rxjs": "^7.0.0"
   }
 }
